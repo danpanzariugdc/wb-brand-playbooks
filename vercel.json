@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/api/auth" },
+    { "source": "/keyword-reference", "destination": "/api/auth" },
+    { "source": "/brand-playbook", "destination": "/api/auth" },
+    { "source": "/freelancer-playbook", "destination": "/api/auth" },
+    { "source": "/((?!api|_static|favicon\\.ico).*)", "destination": "/api/auth" }
+  ]
+}

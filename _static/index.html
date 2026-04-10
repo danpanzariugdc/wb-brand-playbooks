@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhichBingo – Brand Playbooks</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+  :root {
+    --navy: #003366;
+    --dark-navy: #001F3E;
+    --dark-red: #A12207;
+    --red-orange: #D43C1C;
+    --yellow: #FFAF26;
+    --bright-blue: #0A64BE;
+    --pastel-blue1: #94C8EE;
+    --pastel-blue4: #E6F4FF;
+    --pastel-blue5: #F4FAFF;
+    --pastel-yellow1: #FCE7C4;
+    --pastel-yellow3: #FCF5EA;
+    --light-grey1: #DDDDDD;
+    --light-grey2: #F1F1F1;
+    --white: #ffffff;
+    --text: #001F3E;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(0,51,102,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--light-grey2); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--dark-navy);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;
+    height: 56px; box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .nav-left { display: flex; align-items: center; gap: 1rem; }
+  .nav-logo-which { color: var(--pastel-blue1); font-weight: 800; font-size: 1.05rem; font-style: italic; }
+  .nav-logo-bingo { color: var(--red-orange); font-weight: 900; font-size: 1.05rem; font-style: italic; }
+  .nav-pill {
+    background: rgba(255,175,38,0.15); border: 1px solid rgba(255,175,38,0.3);
+    color: var(--yellow); font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.22rem 0.7rem; border-radius: 100px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy); padding: 7rem 2rem 4rem;
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 80% at 90% 50%, rgba(161,34,7,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 30% 60% at 5% 50%, rgba(10,100,190,0.1) 0%, transparent 65%);
+  }
+  .hero-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block; background: rgba(255,175,38,0.12);
+    border: 1px solid rgba(255,175,38,0.28); color: var(--yellow);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 0.35rem 0.9rem;
+    border-radius: 100px; margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--white); line-height: 1.15; margin-bottom: 0.75rem;
+  }
+  .hero h1 em { color: var(--pastel-blue1); font-style: italic; }
+  .hero p {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5);
+    max-width: 540px; margin: 0 auto 2.5rem;
+  }
+
+  /* CARDS */
+  .cards { max-width: 960px; margin: -3rem auto 4rem; padding: 0 1.5rem; position: relative; z-index: 10; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .card {
+    background: var(--white); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none; color: inherit; display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,51,102,0.14); }
+  .card-accent { height: 5px; }
+  .card-accent.red { background: linear-gradient(90deg, var(--dark-red), var(--red-orange)); }
+  .card-accent.blue { background: linear-gradient(90deg, var(--bright-blue), var(--pastel-blue1)); }
+  .card-accent.gold { background: linear-gradient(90deg, var(--yellow), #FFD080); }
+  .card-body { padding: 1.8rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+  .card-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+  }
+  .card-icon.red { background: rgba(161,34,7,0.08); }
+  .card-icon.blue { background: rgba(10,100,190,0.08); }
+  .card-icon.gold { background: rgba(255,175,38,0.12); }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .card p { font-size: 0.85rem; color: #556; flex: 1; margin-bottom: 1rem; }
+  .card-cta {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; font-weight: 700; color: var(--bright-blue);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .card-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
+  .card:hover .card-cta svg { transform: translateX(3px); }
+
+  /* TAG PILLS */
+  .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+  .tag {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.2rem 0.55rem; border-radius: 100px;
+  }
+  .tag.seo { background: var(--pastel-blue4); color: var(--bright-blue); }
+  .tag.voice { background: rgba(161,34,7,0.08); color: var(--dark-red); }
+  .tag.freelancer { background: var(--pastel-yellow1); color: #7A5800; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark-navy); color: rgba(255,255,255,0.38);
+    text-align: center; padding: 2rem; font-size: 0.78rem;
+  }
+  footer .tagline { color: var(--yellow); opacity: 0.6; font-style: italic; margin-top: 0.5rem; font-size: 0.74rem; }
+
+  @media (max-width: 680px) {
+    .card-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-left">
+    <div><span class="nav-logo-which">Which</span><span class="nav-logo-bingo">Bingo</span></div>
+    <span class="nav-pill">Brand Playbooks</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Internal Reference</div>
+    <h1>Brand <em>Playbooks.</em></h1>
+    <p>Everything you need to write for WhichBingo. Keyword targets, brand voice, and freelancer guidelines — all in one place.</p>
+  </div>
+</div>
+
+<div class="cards">
+  <div class="card-grid">
+
+    <a class="card" href="/_static/keyword-reference.html">
+      <div class="card-accent red"></div>
+      <div class="card-body">
+        <div class="card-icon red">🔑</div>
+        <div class="card-tags">
+          <span class="tag seo">SEO</span>
+          <span class="tag voice">Keywords</span>
+        </div>
+        <h3>Keyword & Anchor Text Reference</h3>
+        <p>Page-by-page keyword targets, secondary terms, and approved anchor text for every WhichBingo content page. The go-to reference for writers and editors.</p>
+        <span class="card-cta">Open Reference <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a class="card" href="/_static/brand-playbook.html">
+      <div class="card-accent blue"></div>
+      <div class="card-body">
+        <div class="card-icon blue">📘</div>
+        <div class="card-tags">
+          <span class="tag voice">Voice &amp; Tone</span>
+          <span class="tag seo">Brand</span>
+        </div>
+        <h3>Brand Voice & Tone Guide</h3>
+        <p>The definitive guide to WhichBingo's brand personality, writing style, do's and don'ts, and tone calibration across all content types.</p>
+        <span class="card-cta">Open Playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <a class="card" href="/_static/freelancer-playbook.html">
+      <div class="card-accent gold"></div>
+      <div class="card-body">
+        <div class="card-icon gold">✍️</div>
+        <div class="card-tags">
+          <span class="tag freelancer">Freelancer</span>
+          <span class="tag voice">Writing Guide</span>
+        </div>
+        <h3>Freelancer Voice & Tone Guide</h3>
+        <p>Tailored guide for freelance writers — covers WhichBingo's voice, formatting expectations, content standards, and quick-start checklist.</p>
+        <span class="card-cta">Open Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div>WhichBingo Brand Playbooks &middot; Internal Use Only &middot; GDC Group</div>
+  <div class="tagline">Your one-stop shop for writing the WhichBingo way.</div>
+</footer>
+
+</body>
+</html>
