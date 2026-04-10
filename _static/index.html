@@ -45,6 +45,9 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.22rem 0.7rem; border-radius: 100px;
   }
+  .nav-links { display: flex; gap: 1.25rem; list-style: none; }
+  .nav-links a { color: rgba(148,200,238,0.6); text-decoration: none; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--yellow); }
 
   /* HERO */
   .hero {
@@ -146,6 +149,11 @@
     <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;cursor:pointer;"><span class="nav-logo-which">Which</span><span class="nav-logo-bingo">Bingo</span></a>
     <span class="nav-pill">Brand Playbooks</span>
   </div>
+  <ul class="nav-links">
+    <li><a href="/_static/keyword-reference.html">Keywords</a></li>
+    <li><a href="/_static/brand-playbook.html">Brand Voice</a></li>
+    <li><a href="/_static/freelancer-playbook.html">Freelancer Guide</a></li>
+  </ul>
 </nav>
 
 <div class="hero">
